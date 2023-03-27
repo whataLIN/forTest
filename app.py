@@ -345,31 +345,33 @@ elif choice == "데이터페이지":
 
 elif choice == "시뮬레이션":
 
-    tab0, tab1, tab2, tab3 = st.tabs(["첫 번째 선수", "첫 번째 선수", "첫 번째 선수", "첫 번째 선수"])
-    players = []
+    # tab0, tab1, tab2, tab3 = st.tabs(["첫 번째 선수", "첫 번째 선수", "첫 번째 선수", "첫 번째 선수"])
+    # players = []
     
-    with tab1:
-        tab1.subheader("첫 번째 선수")
+    # with tab1:
+    #     tab1.subheader("첫 번째 선수")
     
-    i=1
+    # i=1
 
-    while False:
-        player={}
-        player["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_1")
-        player["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_1")
-        player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_1")
-        player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_1")
-        player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
-        player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
+    # while False:
+    #     player={}
+    #     player["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_1")
+    #     player["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_1")
+    #     player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_1")
+    #     player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_1")
+    #     player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
+    #     player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
 
-        total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
-        if total_stats > 40:
-            st.warning("스텟 총합이 40을 넘을 수 없습니다.")
-        else:
+    #     total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
+    #     if total_stats > 40:
+    #         st.warning("스텟 총합이 40을 넘을 수 없습니다.")
+    #     else:
 
 
-    if st.button('저장'):
-        players.append(player)
+    # if st.button('저장'):
+    #     players.append(player)
+
+    tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
         
 
     st.write(players)
