@@ -371,14 +371,16 @@ elif choice == "시뮬레이션":
     # if st.button('저장'):
     #     players.append(player)
 
-    tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
+    # tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
+    cols = st.columns(5)
     
     player_keys = [
         "shooting", "Dribbling", "Passing", "Rebounding", 'Defense', "Stamina"
     ]
 
-    for i, t in enumerate(tabs):
-        with t:
+    # for i, t in enumerate(tabs):
+    for i, c in enumerate(cols):
+        with c:
             st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_{i+1}")
             st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_{i+1}")
             st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i+1}")
