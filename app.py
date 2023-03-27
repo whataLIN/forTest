@@ -363,10 +363,8 @@ elif choice == "시뮬레이션":
             total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
             if total_stats > 40:
                 st.warning("스텟 총합이 40을 넘을 수 없습니다.")
-        st.button
-        
-
-        players.append(player)
+        if st.button("저장"):
+            players.append(player)
 
 
 
