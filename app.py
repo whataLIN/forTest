@@ -346,10 +346,10 @@ elif choice == "데이터페이지":
 elif choice == "시뮬레이션":
 
     players = []
-
+    
     for i in range(5):
         player = {}
-
+        total_stats=6
         while total_stats <= 40:
             # player["name"] = st.text_input(f"Enter the name of player {i+1}")
             player["Shooting"] = st.slider(f"슈팅", min_value=1, max_value=10, value=1)
@@ -359,7 +359,7 @@ elif choice == "시뮬레이션":
             player["Defense"] = st.slider(f"수비", min_value=1, max_value=10, value=1)
             player["Stamina"] = st.slider(f"스테미나", min_value=1, max_value=10, value=1)
 
-            totalst=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
+            total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
             if total_stats > 40:
                 st.warning("스텟 총합이 40을 넘을 수 없습니다.")
         
