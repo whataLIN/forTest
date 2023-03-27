@@ -393,7 +393,7 @@ elif choice == "시뮬레이션":
             }
             
             for i in player_keys:
-                st.write(f"{i} : {state[i]} \n")
+                st.write(f"{i} : {state[i_{i+1}]} \n")
             
                 
     
