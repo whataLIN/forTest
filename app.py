@@ -6,7 +6,7 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
-menu = ["메인페이지", "데이터페이지", "기타"]
+menu = ["메인페이지", "데이터페이지", "시뮬레이션"]
 choice = st.sidebar.selectbox("메뉴를 선택해주세요", menu)
 
 if choice == "메인페이지":
@@ -341,6 +341,35 @@ elif choice == "데이터페이지":
     with tab2:
         tab2.subheader("Streamlit 진행상태..")
         st.write()
+
+
+elif choice == "시뮬레이션":
+
+    players = []
+
+    for i in range(5):
+        player = {}
+
+        while total_stats <= 40:
+            # player["name"] = st.text_input(f"Enter the name of player {i+1}")
+            player["Shooting"] = st.slider(f"슈팅", min_value=1, max_value=10, value=1)
+            player["Dribbling"] = st.slider(f"드리블", min_value=1, max_value=10, value=1)
+            player["Passing"] = st.slider(f"패스", min_value=1, max_value=10, value=1)
+            player["Rebounding"] = st.slider(f"리바운드", min_value=1, max_value=10, value=1)
+            player["Defense"] = st.slider(f"수비", min_value=1, max_value=10, value=1)
+            player["Stamina"] = st.slider(f"스테미나", min_value=1, max_value=10, value=1)
+
+            totalst=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
+            if total_stats > 40:
+                st.warning("스텟 총합이 40을 넘을 수 없습니다.")
+        
+
+        players.append(player)
+
+
+
+
+
         '''
         ### 현재 진행상태
         > * 메인페이지 구현완료.
