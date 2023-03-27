@@ -393,7 +393,7 @@ elif choice == "시뮬레이션":
             }
             st.write(player)
     
-    st.write(state[shooting_1])
+    st.write(state['shooting_1'])
 
 
 
