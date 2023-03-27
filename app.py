@@ -387,7 +387,7 @@ elif choice == "시뮬레이션":
             st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_{i+1}")
             state = st.session_state
             player = {
-                key: value for key, value in [(k, state[f'{k}_i']) for k in player_keys]
+                key: value for key, value in [(k, state[f'{k}_{i+1}']) for k in player_keys]
             }
             st.write(player)
 
