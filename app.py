@@ -348,7 +348,7 @@ elif choice == "시뮬레이션":
     players = []
     
     for i in range(5):
-        st.write(f"{i}번째 선수")
+        st.write(f"{i+1}번째 선수")
         player = {}
         total_stats=6
         while total_stats <= 40:
@@ -365,6 +365,9 @@ elif choice == "시뮬레이션":
                 st.warning("스텟 총합이 40을 넘을 수 없습니다.")
         if st.button("저장"):
             players.append(player)
+    
+    st.write(players)
+    
 
 
 
