@@ -388,11 +388,12 @@ elif choice == "시뮬레이션":
 
     st.write(players)
 
-        def clear_cache():
-            return None
+    def clear_cache():
+        return None
 
-        if st.button('Clear Cache'):
-            clear_cache()
+    if st.button('Clear Cache'):
+        clear_cache()
+        
 
 
 
