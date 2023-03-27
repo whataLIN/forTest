@@ -384,7 +384,7 @@ elif choice == "시뮬레이션":
             players.append(player)
 
     def clear_cache():
-    return None
+        return None
 
     if st.button('Clear Cache'):
         clear_cache()
