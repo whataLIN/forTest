@@ -346,58 +346,32 @@ elif choice == "데이터페이지":
 elif choice == "시뮬레이션":
 
     players = []
-    st.button('초기화')
-    st.button('저장')
-
-    def reset_values():
-
-        for i in range(5):
-            st.write(f"{i+1}번째 선수")
-            player = players[i]
-            st.slider("슈팅", min_value=1, max_value=10, value=player["Shooting"], key=f"reset_shooting_{i}")
-            st.slider("드리블", min_value=1, max_value=10, value=player["Dribbling"], key=f"reset_Dribbling_{i}")
-            st.slider("패스", min_value=1, max_value=10, value=player["Passing"], key=f"reset_Passing_{i}")
-            st.slider("리바운드", min_value=1, max_value=10, value=player["Rebounding"], key=f"reset_Rebounding_{i}")
-            st.slider("수비", min_value=1, max_value=10, value=player["Defense"], key=f"reset_Defense_{i}")
-            st.slider("스테미나", min_value=1, max_value=10, value=player["Stamina"], key=f"reset_Stamina_{i}")
-
     
-    for i in range(5):
+    with tab1:
+        tab1.subheader("첫 번째 선수")
 
-        st.write(f"{i+1}번째 선수")
-        player = {}
-        total_stats=6
-        while total_stats <= 40:
-            player["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_{i}")
-            player["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_{i}")
-            player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i}")
-            player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_{i}")
-            player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_{i}")
-            player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_{i}")
+        player_1={}
+        player["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_1")
+        player["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_1")
+        player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_1")
+        player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_1")
+        player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
+        player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
 
-            total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
-            if total_stats > 40:
-                st.warning("스텟 총합이 40을 넘을 수 없습니다.")
+        st.button('초기화')
+        st.button('저장')
+
         if st.button("저장"):
-            players.append(player)
-            st.success("저장되었습니다.")
-            st.write(f"현재 저장된 선수: {players}")
-        st.write("\n")
+            players.append(player_1)
 
-    if st.button("초기화"):
-        players = []
-        st.success("저장된 선수를 초기화했습니다.")
+        if st.button("초기화"):
+            slider_value = 1
+            st.experimental_set_query_params(slider_value=slider_value)
+        else:
+            slider_value = st.experimental_get_query_params().get("slider_value", 1)
 
-    st.write(players)
-
-    def clear_cache():
-        return None
-
-    if st.button('Clear Cache'):
-        clear_cache()
-
-
-
+        slider_value = st.slider("슬라이더", 1, 10, slider_value)
+        st.write("슬라이더 값:", slider_value)
 
 
 
