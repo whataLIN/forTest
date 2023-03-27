@@ -352,12 +352,12 @@ elif choice == "시뮬레이션":
         tab1.subheader("첫 번째 선수")
 
         player_1={}
-        player["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_1")
-        player["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_1")
-        player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_1")
-        player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_1")
-        player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
-        player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
+        player_1["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_1")
+        player_1["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_1")
+        player_1["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_1")
+        player_1["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_1")
+        player_1["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
+        player_1["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
 
         st.button('초기화')
         st.button('저장')
