@@ -359,7 +359,7 @@ elif choice == "시뮬레이션":
         player_1["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
         player_1["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
 
-        total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
+        total_stats=player_1["Shooting"]+player_1["Dribbling"]+player_1["Passing"]+player_1["Rebounding"]+player_1["Defense"]+player_1["Stamina"]
         if total_stats > 40:
             st.warning("스텟 총합이 40을 넘을 수 없습니다.")
 
