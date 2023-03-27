@@ -363,8 +363,9 @@ elif choice == "시뮬레이션":
         if total_stats > 40:
             st.warning("스텟 총합이 40을 넘을 수 없습니다.")
 
-        st.button('저장',key="SAVE_B")
+    if st.button('저장'):
+        players.append(player_1)
 
 
 
-        st.write(players)
+    st.write(players)
