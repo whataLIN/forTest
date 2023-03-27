@@ -348,20 +348,22 @@ elif choice == "시뮬레이션":
     players = []
     
     for i in range(5):
+        st.write(f"{i}번째 선수")
         player = {}
         total_stats=6
         while total_stats <= 40:
             # player["name"] = st.text_input(f"Enter the name of player {i+1}")
-            player["Shooting"] = st.slider(f"슈팅", min_value=1, max_value=10, value=1)
-            player["Dribbling"] = st.slider(f"드리블", min_value=1, max_value=10, value=1)
-            player["Passing"] = st.slider(f"패스", min_value=1, max_value=10, value=1)
-            player["Rebounding"] = st.slider(f"리바운드", min_value=1, max_value=10, value=1)
-            player["Defense"] = st.slider(f"수비", min_value=1, max_value=10, value=1)
-            player["Stamina"] = st.slider(f"스테미나", min_value=1, max_value=10, value=1)
+            player["Shooting"] = st.slider(f"player {i+1}의 슈팅 능력치", min_value=1, max_value=10, value=1)
+            player["Dribbling"] = st.slider(f"player {i+1}의 드리블 능력치", min_value=1, max_value=10, value=1)
+            player["Passing"] = st.slider(f"player {i+1}의 패스 능력치", min_value=1, max_value=10, value=1)
+            player["Rebounding"] = st.slider(f"player {i+1}의 리바운드 능력치", min_value=1, max_value=10, value=1)
+            player["Defense"] = st.slider(f"player {i+1}의 수비 능력치", min_value=1, max_value=10, value=1)
+            player["Stamina"] = st.slider(f"player {i+1}의 스테미나 능력치", min_value=1, max_value=10, value=1)
 
             total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
             if total_stats > 40:
                 st.warning("스텟 총합이 40을 넘을 수 없습니다.")
+        st.button
         
 
         players.append(player)
