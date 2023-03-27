@@ -392,8 +392,8 @@ elif choice == "시뮬레이션":
                 key: value for key, value in [(k, state[f'{k}_{i+1}']) for k in player_keys]
             }
             
-            for i in player_keys:
-                st.write(f"{i} : {state[i_{i+1}]} \n")
+            for p in player_keys:           #i는 플레이어번호. p는 능력치
+                st.write(f"{p} : {state[p_{i+1}]}")
             
                 
     
