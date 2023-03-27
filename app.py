@@ -355,7 +355,7 @@ elif choice == "시뮬레이션":
             # player["name"] = st.text_input(f"Enter the name of player {i+1}")
             player["Shooting"] = st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_{i}")
             player["Dribbling"] = st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_{i}")
-            player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i}"
+            player["Passing"] = st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i}")
             player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_{i}")
             player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_{i}")
             player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_{i}")
