@@ -346,6 +346,16 @@ elif choice == "데이터페이지":
 elif choice == "시뮬레이션":
 
     players = []
+    def reset_values():
+    for i in range(5):
+        st.write(f"{i+1}번째 선수")
+        player = players[i]
+        st.slider("슈팅", min_value=1, max_value=10, value=player["Shooting"], key=f"shooting_{i}")
+        st.slider("드리블", min_value=1, max_value=10, value=player["Dribbling"], key=f"Dribbling_{i}")
+        st.slider("패스", min_value=1, max_value=10, value=player["Passing"], key=f"Passing_{i}")
+        st.slider("리바운드", min_value=1, max_value=10, value=player["Rebounding"], key=f"Rebounding_{i}")
+        st.slider("수비", min_value=1, max_value=10, value=player["Defense"], key=f"Defense_{i}")
+        st.slider("스테미나", min_value=1, max_value=10, value=player["Stamina"], key=f"Stamina_{i}")
     
     for i in range(5):
         st.write(f"{i+1}번째 선수")
@@ -365,13 +375,19 @@ elif choice == "시뮬레이션":
             player["Rebounding"] = st.slider("리바운드", min_value=1, max_value=10, value=1)
             player["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1)
             player["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1)
-            
+
 
             total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
             if total_stats > 40:
                 st.warning("스텟 총합이 40을 넘을 수 없습니다.")
         if st.button("저장"):
             players.append(player)
+
+    def clear_cache():
+    return None
+
+    if st.button('Clear Cache'):
+        clear_cache()
     
     st.write(players)
 
