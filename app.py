@@ -348,6 +348,7 @@ elif choice == "시뮬레이션":
     players = []
 
     st.button('초기화')
+    st.button('저장')
 
     def reset_values():
         for i in range(5):
@@ -393,7 +394,7 @@ elif choice == "시뮬레이션":
 
     if st.button('Clear Cache'):
         clear_cache()
-        
+
 
 
 
