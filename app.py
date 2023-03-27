@@ -411,9 +411,11 @@ elif choice == "시뮬레이션":
     ]
 
     pl=pd.DataFrame(columns=player_keys, index=range(1,6))
-    
     # for i, t in enumerate(tabs):
-    conf_list=list(df['CONF'].unique)
+    url='https://raw.githubusercontent.com/whataLIN/sportsTOoTOo/main/cbb.csv'
+    df = pd.read_csv(url)
+
+    conf_list=list(df['CONF'].unique())
     team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
 
     for i, c in enumerate(cols):
@@ -436,9 +438,13 @@ elif choice == "시뮬레이션":
             pl.loc[i+1] = player
 
     
+    tdf = df.drop(['TEAM', 'YEAR','W','G'], axis=1).copy()
+    max_values = [tdf[i].max() for i in tdf.columns]
 
-    # shooting - 
-    st.write(pl)
+    
+
+
+    # st.write(pl)
 
                 #슈팅 : 슈팅_i
             #데이터프레임에 선수 능력치 저장하깅
