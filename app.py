@@ -392,6 +392,9 @@ elif choice == "시뮬레이션":
                 key: value for key, value in [(k, state[f'{k}_{i+1}']) for k in player_keys]
             }
             st.write(player)
+    
+    st.write(state[shooting_1])
+
 
 
     # st.write(players)
