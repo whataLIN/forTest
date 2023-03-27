@@ -347,15 +347,15 @@ elif choice == "시뮬레이션":
 
     players = []
     def reset_values():
-    for i in range(5):
-        st.write(f"{i+1}번째 선수")
-        player = players[i]
-        st.slider("슈팅", min_value=1, max_value=10, value=player["Shooting"], key=f"shooting_{i}")
-        st.slider("드리블", min_value=1, max_value=10, value=player["Dribbling"], key=f"Dribbling_{i}")
-        st.slider("패스", min_value=1, max_value=10, value=player["Passing"], key=f"Passing_{i}")
-        st.slider("리바운드", min_value=1, max_value=10, value=player["Rebounding"], key=f"Rebounding_{i}")
-        st.slider("수비", min_value=1, max_value=10, value=player["Defense"], key=f"Defense_{i}")
-        st.slider("스테미나", min_value=1, max_value=10, value=player["Stamina"], key=f"Stamina_{i}")
+        for i in range(5):
+            st.write(f"{i+1}번째 선수")
+            player = players[i]
+            st.slider("슈팅", min_value=1, max_value=10, value=player["Shooting"], key=f"shooting_{i}")
+            st.slider("드리블", min_value=1, max_value=10, value=player["Dribbling"], key=f"Dribbling_{i}")
+            st.slider("패스", min_value=1, max_value=10, value=player["Passing"], key=f"Passing_{i}")
+            st.slider("리바운드", min_value=1, max_value=10, value=player["Rebounding"], key=f"Rebounding_{i}")
+            st.slider("수비", min_value=1, max_value=10, value=player["Defense"], key=f"Defense_{i}")
+            st.slider("스테미나", min_value=1, max_value=10, value=player["Stamina"], key=f"Stamina_{i}")
     
     for i in range(5):
         st.write(f"{i+1}번째 선수")
