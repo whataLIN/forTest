@@ -374,7 +374,7 @@ elif choice == "시뮬레이션":
     tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
     
     player_keys = [
-        "shooting", "Dribbling", "Passing", 'Defense', "Stamina"
+        "shooting", "Dribbling", "Passing", "Rebounding", 'Defense', "Stamina"
     ]
 
     for i, t in enumerate(tabs):
