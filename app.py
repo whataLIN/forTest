@@ -393,7 +393,10 @@ elif choice == "시뮬레이션":
             }
             
             for p in player_keys:           #i는 플레이어번호. p는 능력치
-                st.write(f"{p} : {state[{p}_{i+1}]}")
+                stat=f"{p}_{i+1}"
+                st.write(f"{p} : {stat}")
+
+                #슈팅 : 슈팅_i
             
                 
     
