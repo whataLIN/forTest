@@ -355,3 +355,15 @@ elif choice == "데이터페이지":
 
 elif choice == "시뮬레이션":
     st.write("선수들의 능력치를 입력해 주세요! 단, 한 선수의 스탯 합이 40을 넘을 수는 없습니다.")
+
+    players=[]
+
+    for i in range(num_players):
+    player = {}
+    <!-- player["name"] = st.text_input(f"Enter the name of player {i+1}") -->
+    player["Shooting"] = st.number_input(f"슈팅", min_value=1, max_value=10, value=1)
+    player["Dribbling"] = st.number_input(f"드리블", min_value=1, max_value=10, value=1)
+    player["Passing"] = st.number_input(f"패스", min_value=1, max_value=10, value=1)
+    player["Rebounding"] = st.number_input(f"리바운드", min_value=1, max_value=10, value=1)
+    player["Defense"] = st.number_input(f"수비", min_value=1, max_value=10, value=1)
+    player["Stamina"] = st.number_input(f"스태미나", min_value=1, max_value=10, value=1)
