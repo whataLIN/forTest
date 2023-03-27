@@ -359,8 +359,8 @@ elif choice == "시뮬레이션":
         player_1["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
         player_1["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
 
-        st.button('초기화')
-        st.button('저장')
+        st.button('초기화',key="RESET_B")
+        st.button('저장',key="SAVE_B")
 
         if st.button("저장"):
             players.append(player_1)
