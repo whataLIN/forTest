@@ -345,6 +345,7 @@ elif choice == "데이터페이지":
 
 elif choice == "시뮬레이션":
 
+    tab0, tab1, tab2, tab3 = st.tabs(["첫 번째 선수", "첫 번째 선수", "첫 번째 선수", "첫 번째 선수"])
     players = []
     
     with tab1:
