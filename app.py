@@ -359,12 +359,12 @@ elif choice == "시뮬레이션":
         player_1["Defense"] = st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_1")
         player_1["Stamina"] = st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_1")
 
-        if st.button("저장"):
-            players.append(player_1)
+        total_stats=player["Shooting"]+player["Dribbling"]+player["Passing"]+player["Rebounding"]+player["Defense"]+player["Stamina"]
+        if total_stats > 40:
+            st.warning("스텟 총합이 40을 넘을 수 없습니다.")
 
-        if st.button("초기화"):
-            slider_value = 1
-            st.experimental_set_query_params(slider_value=slider_value)
-
+        st.button('저장',key="SAVE_B")
 
 
+
+        st.write(players)
