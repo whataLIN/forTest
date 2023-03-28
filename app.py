@@ -499,6 +499,9 @@ elif choice == "시뮬레이션":
     percentage_cal(pl, pl_to_per, df=fromStamina, stat='Stamina')
     
     st.write(pl_to_per)
+    team_ability=pl_to_per.sum(axis=1)
+    st.write(team_ability)
+
     df_columns = ['ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB',
        'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB',
        'CONF_A10', 'CONF_ACC', 'CONF_AE', 'CONF_ASun', 'CONF_Amer', 'CONF_B10',
