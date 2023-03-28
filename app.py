@@ -456,6 +456,7 @@ elif choice == "시뮬레이션":
         columns=tdf.columns,
         index=pl.index
     )
+    st.write(pl)
 
 
     def get_max(df):   #최대값을 구해 딕셔너리로 반환하는 함수
@@ -526,7 +527,7 @@ elif choice == "시뮬레이션":
         df_forms[i]=pl_to_per[i]
 
     st.write(df_forms)
-    
+
     
     # teaminfo = pd.DataFrame(
     #     data=pl_to_per.sum(axis=0).values.reshape(1, 15),
