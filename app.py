@@ -515,7 +515,10 @@ elif choice == "시뮬레이션":
     teaminfo['SEED']='Missed Tournament'
     teaminfo['WAB']=0
 
-    df = df.reindex(index=["CONF", 'ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB', 'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB', 'POSTSEASON', 'SEED'])
+    df = df.reindex(index=
+        ["CONF", 'ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 
+        'TOR', 'TORD', 'ORB', 'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', 
+        '3P_O', '3P_D', 'ADJ_T', 'WAB', 'POSTSEASON', 'SEED'], inplace=True)
 
 
     st.write(teaminfo)
