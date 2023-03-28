@@ -436,43 +436,75 @@ elif choice == "시뮬레이션":
             pl.loc[f"{i+1}번째 선수"] = player
 
     
-    tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF'], axis=1).copy()
-    max_values = {key: int(value) for key, value in tdf.max().to_dict().items()}
+    tdf = bd.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','Winning_rate','WAB'], axis=1).copy()
+    
+    fromShooting = tdf[['ADJOE', 'EFG_O', 'FTR', '2P_O', '3P_O']].copy()
+    fromDribbling = tdf[['TORD']].copy()
+    fromRebounding = tdf[['ORB', 'DRB']].copy()
+    fromDefense = tdf[['TOR', 'EFG_D', 'ADJDE', '2P_D', '3P_D', 'FTRD']].copy()
+    fromStamina = tdf[['ADJ_T']].copy()
+
+    plusVarlist=['ADJOE', 'EFG_O', 'FTR', '2P_O', '3P_O', 'ORB', 'TOR','ADJ_T']
+    minusVarlist=['TORD', 'EFG_D', '2P_D', '3P_D', 'FTRD', 'ADJDE', 'DRB']
+
+    pl_to_per=pd.DataFrame(
+        0,
+        columns=tdf.columns,
+        index=pl.index
+    )
+
+
+    def get_max(df):   #최대값을 구해 딕셔너리로 반환하는 함수
+        return {key: int(value) for key, value in df.max().to_dict().items()}
 
         # ADJOE, ADJDE, EFG_O, EFG_D, TOR, TORD, ORB, DRB, FTR, FTRD, 2P_O, 2P_D, 3P_O, 3P_D, ADJ_T
         # postseason, seed는 missed tornament.
 
-    num_vars = len(max_values)
-    contributions = [[0.0] * num_vars for _ in range(5)]
-    total_contributions = [0.0] * num_vars
+    def percentage_cal(stat_pl, final_df, df, stat):      # statlist를 하나씩 받음
+            #df는 스탯별로 영향을 주는 변수끼리 나눈거
+            #stat_pl는 선수들의 스탯 모음
+            #finaldf는 결과를 반영할 df
+            #stat는 선수 스탯을 어디서 가져올건지
 
-    # team = df.
+        columnlist=df.columns
+        addper=[]
+        subper=[]
+        max_values = get_max(df)  #df의 각 값의 max값이 딕셔너리로 반환
 
-    def calculate_contribution_percentages(stats, max_values):
+        for i in columnlist:
+            if i in plusVarlist:
+                addper.append(i)
+            else:
+                subper.append(i)
+                final_df[i]=max_values[i]/5
+
 
         for p in range(5):
-            for v in range(num_vars):
-                if max_values[v] == 0:
-                    continue
-                player_contribution = stats[p,v] / max_values[v]
-                contributions[p][v] = player_contribution
-                total_contributions[v] += player_contribution
+            for i in addper:      #df의 컬럼명을 차례로 가져옴
+                final_df.loc[f"{p+1}번째 선수", i] += (int(max_values[i])/50) * stat_pl.loc[f"{p+1}번째 선수", stat]
 
-        # 기여도를 백분율로 나타내기 위한 함수
-        contribution_percentages = [[0.0] * num_vars for _ in range(5)]
+        # for p in range(5):
+        #   for i in subper:      #df의 컬럼명을 차례로 가져옴
+        #     max_values[i] -= (int(max_values[i])/5) * (stat_pl.loc[f"{p+1}번째 선수", stat])
+        #     final_df.loc[f"{p+1}번째 선수", i] = max_values[i]
+
         for p in range(5):
-            for v in range(num_vars):
-                if total_contributions[v] == 0:
-                    continue
-                contribution_percentage = contributions[p][v] / total_contributions[v] * 100
-                contribution_percentages[p][v] = contribution_percentage
-        return contribution_percentages
+            for i in subper:
+                final_df.loc[f"{p+1}번째 선수", i] -= (int(max_values[i]) / 50) * stat_pl.loc[f"{p+1}번째 선수", stat]
 
-    contribution_percentages = calculate_contribution_percentages(pl, max_values)
 
-    for p in range(5):
-        for v in range(num_vars):
-            print(f"Player {p+1} contributes {contribution_percentages[p][v]:.2f}% to variable {v+1}")
+    percentage_cal(pl, pl_to_per, df=fromShooting, stat='Shooting')
+    percentage_cal(pl, pl_to_per, df=fromDribbling, stat='Dribbling')
+    percentage_cal(pl, pl_to_per, df=fromRebounding, stat='Rebounding')
+    percentage_cal(pl, pl_to_per, df=fromDefense, stat='Defense')
+    percentage_cal(pl, pl_to_per, df=fromStamina, stat='Stamina')
+
+    teaminfo = pl_to_per.sum(axis=0)
+
+    st.write(teaminfo)
+
+
+
     
 
 
