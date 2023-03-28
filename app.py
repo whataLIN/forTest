@@ -521,9 +521,11 @@ elif choice == "시뮬레이션":
     df_forms[f'BARTHAG']=0.5
     df_forms[f'CONF_{team_conf}']=1
 
-    for i in df_columns[:17]:       #인덱스
-        if i=='BARTHAG' or i=='WAB':continue
-        df_forms[df_columns[i]] = pl_to_per[df_columns[i]]
+    for i in range(17): # 인덱스
+        col_name = df_columns[i]
+        if col_name == 'BARTHAG' or col_name == 'WAB':
+            continue
+        df_forms[col_name] = pl_to_per[col_name]
 
     st.write(df_forms)
 
