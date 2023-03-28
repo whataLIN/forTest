@@ -418,6 +418,7 @@ elif choice == "시뮬레이션":
 
     for i, c in enumerate(cols):
         with c:
+            st.write(f"{i+1}번째 선수")
             st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"Shooting_{i+1}")
             st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_{i+1}")
             # st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i+1}")
