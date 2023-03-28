@@ -402,7 +402,6 @@ elif choice == "시뮬레이션":
 
     # tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
 
-    
     cols = st.columns(5)
     
     player_keys = [
@@ -439,6 +438,7 @@ elif choice == "시뮬레이션":
 
             pl.loc[f"{i+1}번째 선수"] = player
 
+    
     tdf = df.drop(['POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
     # tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
     
@@ -450,6 +450,12 @@ elif choice == "시뮬레이션":
 
     plusVarlist=['ADJOE', 'EFG_O', 'FTR', '2P_O', '3P_O', 'ORB', 'TOR','ADJ_T']
     minusVarlist=['TORD', 'EFG_D', '2P_D', '3P_D', 'FTRD', 'ADJDE', 'DRB']
+
+    pl_to_per=pd.DataFrame(
+        0,
+        columns=tdf.columns,
+        index=pl.index
+    )
 
 
     def get_max(df):   #최대값을 구해 딕셔너리로 반환하는 함수
@@ -485,6 +491,13 @@ elif choice == "시뮬레이션":
             for i in subper:
                 final_df.loc[f"{p+1}번째 선수", i] -= (int(max_values[i]) / 50) * stat_pl.loc[f"{p+1}번째 선수", stat]
 
+
+    percentage_cal(pl, pl_to_per, df=fromShooting, stat='Shooting')
+    percentage_cal(pl, pl_to_per, df=fromDribbling, stat='Dribbling')
+    percentage_cal(pl, pl_to_per, df=fromRebounding, stat='Rebounding')
+    percentage_cal(pl, pl_to_per, df=fromDefense, stat='Defense')
+    percentage_cal(pl, pl_to_per, df=fromStamina, stat='Stamina')
+
     df_columns = ['ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB',
        'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB',
        'CONF_A10', 'CONF_ACC', 'CONF_AE', 'CONF_ASun', 'CONF_Amer', 'CONF_B10',
@@ -504,14 +517,11 @@ elif choice == "시뮬레이션":
     
     df_forms['SEED_Missed Tournament']=1
     df_forms['POSTSEASON_Missed Tournament']=1
+    df_forms[f'SEED_Missed Tournament']=1
     df_forms[f'CONF_{team_conf}']=1
-    
-    percentage_cal(pl, df_forms, df=fromShooting, stat='Shooting')
-    percentage_cal(pl, df_forms, df=fromDribbling, stat='Dribbling')
-    percentage_cal(pl, df_forms, df=fromRebounding, stat='Rebounding')
-    percentage_cal(pl, df_forms, df=fromDefense, stat='Defense')
-    percentage_cal(pl, df_forms, df=fromStamina, stat='Stamina')
 
+    for i in df_columns[:18]:
+        df.forms[i]=pl_to_per[i]
     
     # teaminfo = pd.DataFrame(
     #     data=pl_to_per.sum(axis=0).values.reshape(1, 15),
@@ -539,21 +549,21 @@ elif choice == "시뮬레이션":
     # df=pd.get_dummies(df, columns=['CONF','SEED','POSTSEASON'])  
     # df = df.tail(1)
 
-    # option = st.selectbox(
-    # '원하는 차트를 골라주세요',
-    # ('LinearRegressor', 'RandomForest', 'DecisionTree')) #'XGBoost'
-    # model_path = f"KL/{option}.pkl"
-    # model = joblib.load(model_path)
+    option = st.selectbox(
+    '원하는 차트를 골라주세요',
+    ('LinearRegressor', 'RandomForest', 'DecisionTree')) #'XGBoost'
+    model_path = f"KL/{option}.pkl"
+    model = joblib.load(model_path)
 
-    # st.write(option)
+    st.write(option)
 
-    # predict_button = st.button("예측")
+    predict_button = st.button("예측")
 
-    # if predict_button:
-    #     variable = teaminfo
-    #     model = joblib.load(f'KL/{option}.pkl')
-    #     pred = model.predict([variable])
-    #     st.metric("결과: ", pred)
+    if predict_button:
+        variable = teaminfo
+        model = joblib.load(f'KL/{option}.pkl')
+        pred = model.predict([variable])
+        st.metric("결과: ", pred)
 
 
 
