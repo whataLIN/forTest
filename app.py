@@ -517,7 +517,8 @@ elif choice == "시뮬레이션":
     teaminfo = teaminfo.reindex(columns=["CONF", 'ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', "TOR", "TORD", 'ORB', 'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB', 'POSTSEASON', 'SEED'])
 
     st.write(teaminfo)
-    st.write(teaminfo[:], df[:])
+    st.write(teaminfo[:], df.iloc[:5])
+    st.write(len(teaminfo.columns), len(df.columns))
 
     #전처리 다시
     df.loc[len(df)] = teaminfo
