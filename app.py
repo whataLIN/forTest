@@ -518,7 +518,7 @@ elif choice == "시뮬레이션":
 
 
     st.write(teaminfo)
-    st.write(teaminfo.columns, df.columns)
+    st.write(teaminfo[:], df[:])
 
     #전처리 다시
     df.loc[len(df)] = teaminfo
