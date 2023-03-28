@@ -518,6 +518,7 @@ elif choice == "시뮬레이션":
     df_forms['SEED_Missed Tournament']=1
     df_forms['POSTSEASON_Missed Tournament']=1
     df_forms[f'SEED_Missed Tournament']=1
+    df_forms[f'BARTHAG']=0.5
     df_forms[f'CONF_{team_conf}']=1
 
     for i in df_columns[:18]:
