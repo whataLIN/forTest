@@ -524,6 +524,9 @@ elif choice == "시뮬레이션":
     for i in df_columns[:17]:
         if i=='BARTHAG' or i=='WAB':continue
         df_forms[i]=pl_to_per[i]
+
+    st.write(df_forms)
+    
     
     # teaminfo = pd.DataFrame(
     #     data=pl_to_per.sum(axis=0).values.reshape(1, 15),
