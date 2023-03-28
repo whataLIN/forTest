@@ -522,7 +522,7 @@ elif choice == "시뮬레이션":
     df_forms[f'CONF_{team_conf}']=1
 
     for i in df_columns[:17]:
-        if i=='BARTHAG':continue
+        if i=='BARTHAG' or i=='WAB':continue
         df_forms[i]=pl_to_per[i]
     
     # teaminfo = pd.DataFrame(
