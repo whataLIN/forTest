@@ -506,8 +506,7 @@ elif choice == "시뮬레이션":
     teaminfo = pd.DataFrame(
         data=pl_to_per.sum(axis=0).values.reshape(1, 15),
         columns=tdf.columns,
-        index=["%"]
-    )
+        index=["%"])
 
     teaminfo['CONF']=team_conf
     teaminfo['BARTHAG']=0.5
@@ -515,10 +514,7 @@ elif choice == "시뮬레이션":
     teaminfo['SEED']='Missed Tournament'
     teaminfo['WAB']=0
 
-    teaminfo = teaminfo.reindex(index=
-        ["CONF", 'ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 
-        'TOR', 'TORD', 'ORB', 'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', 
-        '3P_O', '3P_D', 'ADJ_T', 'WAB', 'POSTSEASON', 'SEED'])
+    teaminfo = teaminfo.reindex(index=["CONF", 'ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', "TOR", "TORD", 'ORB', 'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB', 'POSTSEASON', 'SEED'])
 
 
     st.write(teaminfo)
