@@ -436,7 +436,7 @@ elif choice == "시뮬레이션":
             pl.loc[f"{i+1}번째 선수"] = player
 
     
-    tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','Winning_rate','WAB'], axis=1).copy()
+    tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
     
     fromShooting = tdf[['ADJOE', 'EFG_O', 'FTR', '2P_O', '3P_O']].copy()
     fromDribbling = tdf[['TORD']].copy()
