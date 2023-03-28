@@ -528,7 +528,7 @@ elif choice == "시뮬레이션":
     if predict_button:
         variable = teaminfo
         model = joblib.load(f'KL/{option}.pkl')
-        pred = model1.predict([variable])
+        pred = model.predict([variable])
         st.metric("결과: ", pred)
 
 
