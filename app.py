@@ -401,13 +401,18 @@ elif choice == "시뮬레이션":
     #     players.append(player)
 
     # tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
-
+    cols = st.columns(5)
+    
+    player_keys = [
+        "Shooting", "Dribbling", "Rebounding", 'Defense', "Stamina"
+    ]    
+    
     pl=pd.DataFrame(columns=player_keys, index=[f"{p}번째 선수" for p in range(1,6)])
     # for i, t in enumerate(tabs):
     url='https://github.com/whataLIN/sportsTOoTOo/raw/main/cbb.csv'
     df = pd.read_csv(url)
     df.drop(['TEAM', 'YEAR','W','G'],axis=1, inplace=True)
-    
+
     conf_list=list(df['CONF'].unique())
     team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
 
@@ -434,11 +439,7 @@ elif choice == "시뮬레이션":
     
     
 
-    cols = st.columns(5)
-    
-    player_keys = [
-        "Shooting", "Dribbling", "Rebounding", 'Defense', "Stamina"
-    ]       #"Passing"
+   #"Passing"
 
     position_list=['센터','파워포워드','포인트가드','슈팅가드', '스몰포워드']
     for i, c in enumerate(cols):
