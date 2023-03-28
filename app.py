@@ -500,7 +500,7 @@ elif choice == "시뮬레이션":
     percentage_cal(pl, pl_to_per, df=fromStamina, stat='Stamina')
 
     teaminfo = pd.DataFrame(
-        data=(pl_to_per.sum(axis=0)).reshape(1,15),
+        data=pl_to_per.sum(axis=0).values.reshape(1, 15),
         columns=tdf.columns,
         index=["%"]
     )
