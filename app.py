@@ -412,6 +412,7 @@ elif choice == "시뮬레이션":
     # for i, t in enumerate(tabs):
     url='https://github.com/whataLIN/sportsTOoTOo/raw/main/cbb.csv'
     df = pd.read_csv(url)
+    df.drop(['TEAM', 'YEAR','W','G'], inplace=True)
 
     conf_list=list(df['CONF'].unique())
     team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
@@ -438,7 +439,8 @@ elif choice == "시뮬레이션":
             pl.loc[f"{i+1}번째 선수"] = player
 
     
-    tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
+    tdf = df.drop(['POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
+    # tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
     
     fromShooting = tdf[['ADJOE', 'EFG_O', 'FTR', '2P_O', '3P_O']].copy()
     fromDribbling = tdf[['TORD']].copy()
@@ -514,7 +516,23 @@ elif choice == "시뮬레이션":
 
     st.write(teaminfo)
 
-    
+    #전처리 다시
+    df.loc[len(df)] = teaminfo
+    ps={
+    "R68":68,
+    "R64":64,
+    "R32":32,
+    "S16":16,
+    "E8":8,
+    "F4":4,
+    "2ND":2,
+    "Champion":1
+    }
+    df['POSTSEASON'] = df['POSTSEASON'].map(ps)
+    df.fillna({'POSTSEASON':'Missed Tournament'}, inplace = True)
+    df.fillna({'SEED':'Missed Tournament'}, inplace = True)
+    df = df.tail(1)
+
     option = st.selectbox(
     '원하는 차트를 골라주세요',
     ('LinearRegressor', 'RandomForest', 'DecisionTree')) #'XGBoost'
