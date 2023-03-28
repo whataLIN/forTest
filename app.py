@@ -532,7 +532,7 @@ elif choice == "시뮬레이션":
         col_name = df_columns[i]
         if col_name=='BARTHAG' or col_name=='WAB': continue
 
-        df_forms[col_name]=teaminfo[col_name]
+        df_forms[col_name]+=teaminfo[col_name]
 
     st.write(df_forms)
 
