@@ -498,8 +498,6 @@ elif choice == "시뮬레이션":
     percentage_cal(pl, pl_to_per, df=fromDefense, stat='Defense')
     percentage_cal(pl, pl_to_per, df=fromStamina, stat='Stamina')
 
-    st.write(pl_to_per)
-
     df_columns = ['ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB',
        'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB',
        'CONF_A10', 'CONF_ACC', 'CONF_AE', 'CONF_ASun', 'CONF_Amer', 'CONF_B10',
@@ -523,9 +521,9 @@ elif choice == "시뮬레이션":
     df_forms[f'BARTHAG']=0.5
     df_forms[f'CONF_{team_conf}']=1
 
-    for i in df_columns[:17]:
+    for i in df_columns[:17]:       #인덱스
         if i=='BARTHAG' or i=='WAB':continue
-        df_forms[i]=pl_to_per[i]
+        df_forms[df_columns[i]] = pl_to_per[df_columns[i]]
 
     st.write(df_forms)
 
