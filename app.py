@@ -516,23 +516,11 @@ elif choice == "시뮬레이션":
 
     teaminfo = teaminfo.reindex(index=["CONF", 'ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', "TOR", "TORD", 'ORB', 'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB', 'POSTSEASON', 'SEED'])
 
-
     st.write(teaminfo)
-    st.write(teaminfo.columns, df.columns)
-
 
     #전처리 다시
     df.loc[len(df)] = teaminfo
-    ps={
-    "R68":68,
-    "R64":64,
-    "R32":32,
-    "S16":16,
-    "E8":8,
-    "F4":4,
-    "2ND":2,
-    "Champion":1
-    }
+    ps={"R68":68,"R64":64,"R32":32,"S16":16,"E8":8,"F4":4,"2ND":2,"Champion":1}
     df['POSTSEASON'] = df['POSTSEASON'].map(ps)
     df.fillna({'POSTSEASON':'Missed Tournament'}, inplace = True)
     df.fillna({'SEED':'Missed Tournament'}, inplace = True)
