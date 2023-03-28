@@ -405,7 +405,7 @@ elif choice == "시뮬레이션":
     cols = st.columns(5)
     
     player_keys = [
-        "shooting", "Dribbling", "Rebounding", 'Defense', "Stamina"
+        "Shooting", "Dribbling", "Rebounding", 'Defense', "Stamina"
     ]       #"Passing"
 
     pl=pd.DataFrame(columns=player_keys, index=[f"{p}번째 선수" for p in range(1,6)])
