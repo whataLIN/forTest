@@ -521,7 +521,7 @@ elif choice == "시뮬레이션":
     df_forms[f'BARTHAG']=0.5
     df_forms[f'CONF_{team_conf}']=1
 
-    for i in df_columns[:18]:
+    for i in df_columns[:17]:
         if i=='BARTHAG':continue
         df_forms[i]=pl_to_per[i]
     
