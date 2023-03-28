@@ -521,7 +521,7 @@ elif choice == "시뮬레이션":
     df_forms[f'CONF_{team_conf}']=1
 
     for i in df_columns[:18]:
-        df.forms[i]=pl_to_per[i]
+        df_forms[i]=pl_to_per[i]
     
     # teaminfo = pd.DataFrame(
     #     data=pl_to_per.sum(axis=0).values.reshape(1, 15),
