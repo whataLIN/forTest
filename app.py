@@ -514,6 +514,24 @@ elif choice == "시뮬레이션":
 
     st.write(teaminfo)
 
+    
+    option = st.selectbox(
+    '원하는 차트를 골라주세요',
+    ('LinearRegressor', 'RandomForest', 'DecisionTree', 'XGBoost'))
+
+    
+    model_path = f"MH/{option}.pkl"
+    model = joblib.load(model_path)
+
+    predict_button = st.button("예측")
+
+    if predict_button:
+        variable = teaminfo
+        model = joblib.load('MH/{option}.pkl')
+        pred = model1.predict([variable])
+        pred = pred1.round(2)
+        st.metric("결과: ", pred1[0])
+
 
 
     
