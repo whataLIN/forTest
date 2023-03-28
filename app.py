@@ -412,7 +412,7 @@ elif choice == "시뮬레이션":
     # for i, t in enumerate(tabs):
     url='https://github.com/whataLIN/sportsTOoTOo/raw/main/cbb.csv'
     df = pd.read_csv(url)
-    df.drop(['TEAM', 'YEAR','W','G'], inplace=True)
+    df.drop(['TEAM', 'YEAR','W','G'],axit=1 inplace=True)
 
     conf_list=list(df['CONF'].unique())
     team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
