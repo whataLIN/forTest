@@ -422,7 +422,9 @@ elif choice == "시뮬레이션":
     df_forms['SEED_Missed Tournament']=1
     df_forms['POSTSEASON_Missed Tournament']=1
     df_forms[f'CONF_{team_conf}']=1
-
+    
+    conf_list=list(df['CONF'].unique())
+    team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
 
 
     cols = st.columns(5)
@@ -436,9 +438,6 @@ elif choice == "시뮬레이션":
     url='https://github.com/whataLIN/sportsTOoTOo/raw/main/cbb.csv'
     df = pd.read_csv(url)
     df.drop(['TEAM', 'YEAR','W','G'],axis=1, inplace=True)
-
-    conf_list=list(df['CONF'].unique())
-    team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
 
     position_list=['센터','파워포워드','포인트가드','슈팅가드', '스몰포워드']
     for i, c in enumerate(cols):
