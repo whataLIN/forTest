@@ -401,6 +401,8 @@ elif choice == "시뮬레이션":
     #     players.append(player)
 
     # tabs = st.tabs([f"{i}번째 선수" for i in range(1, 6)])
+    conf_list=list(df['CONF'].unique())
+    team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
 
     df_columns = ['ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB',
        'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB',
@@ -423,9 +425,7 @@ elif choice == "시뮬레이션":
     df_forms['POSTSEASON_Missed Tournament']=1
     df_forms[f'CONF_{team_conf}']=1
     
-    conf_list=list(df['CONF'].unique())
-    team_conf= st.selectbox('참가할 대회를 선택해주세요.', options=conf_list)
-
+    
 
     cols = st.columns(5)
     
