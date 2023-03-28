@@ -417,7 +417,7 @@ elif choice == "시뮬레이션":
        'POSTSEASON_4.0', 'POSTSEASON_8.0', 'POSTSEASON_16.0',
        'POSTSEASON_32.0', 'POSTSEASON_64.0', 'POSTSEASON_68.0']
 
-    df_form = pd.DataFrame([np.zeros(76)], columns=df_columns)
+    df_forms = pd.DataFrame([np.zeros(76)], columns=df_columns)
     
     df_forms['SEED_Missed Tournament']=1
     df_forms['POSTSEASON_Missed Tournament']=1
