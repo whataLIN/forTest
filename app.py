@@ -524,6 +524,8 @@ elif choice == "시뮬레이션":
     for i in range(17): # 인덱스
         col_name = df_columns[i]
         if col_name=='BARTHAG' or col_name=='WAB': continue
+        
+        
         st.write(col_name)
         df_forms[col_name]=pl_to_per[col_name]
 
