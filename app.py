@@ -518,20 +518,18 @@ elif choice == "시뮬레이션":
     option = st.selectbox(
     '원하는 차트를 골라주세요',
     ('LinearRegressor', 'RandomForest', 'DecisionTree')) #'XGBoost'
-    # https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/DecisionTree.pkl
-    # https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/DecisionTree.pkl
-    url='https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/'
-    model_path = url+option+".pkl"
+    model_path = f"KL/{option}.pkl"
     model = joblib.load(model_path)
+
+    st.write(option)
 
     predict_button = st.button("예측")
 
     if predict_button:
         variable = teaminfo
-        model = joblib.load(model_path)
+        model = joblib.load(f'KL/{option}.pkl')
         pred = model1.predict([variable])
-        pred = pred1.round(2)
-        st.metric("결과: ", pred1[0])
+        st.metric("결과: ", pred)
 
 
 
