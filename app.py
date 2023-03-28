@@ -515,8 +515,8 @@ elif choice == "시뮬레이션":
     teaminfo['SEED']='Missed Tournament'
 
     st.write(teaminfo)
-    st.write(len(teaminfo), len(df))
-    
+    st.write(len(teaminfo[1]), len(df[1]))
+
 
     #전처리 다시
     df.loc[len(df)] = teaminfo
