@@ -499,7 +499,11 @@ elif choice == "시뮬레이션":
     percentage_cal(pl, pl_to_per, df=fromDefense, stat='Defense')
     percentage_cal(pl, pl_to_per, df=fromStamina, stat='Stamina')
 
-    teaminfo = pl_to_per.sum(axis=0)
+    teaminfo = pd.DataFrame(
+        data=pl_to_per.sum(axis=0)
+        columns=tdf.columns,
+        index=["%"]
+    )
 
     st.write(teaminfo)
 
