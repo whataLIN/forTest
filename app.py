@@ -439,27 +439,6 @@ elif choice == "시뮬레이션":
 
             pl.loc[f"{i+1}번째 선수"] = player
 
-    df_columns = ['ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB',
-       'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB',
-       'CONF_A10', 'CONF_ACC', 'CONF_AE', 'CONF_ASun', 'CONF_Amer', 'CONF_B10',
-       'CONF_B12', 'CONF_BE', 'CONF_BSky', 'CONF_BSth', 'CONF_BW', 'CONF_CAA',
-       'CONF_CUSA', 'CONF_GWC', 'CONF_Horz', 'CONF_Ind', 'CONF_Ivy',
-       'CONF_MAAC', 'CONF_MAC', 'CONF_MEAC', 'CONF_MVC', 'CONF_MWC',
-       'CONF_NEC', 'CONF_OVC', 'CONF_P12', 'CONF_Pat', 'CONF_SB', 'CONF_SC',
-       'CONF_SEC', 'CONF_SWAC', 'CONF_Slnd', 'CONF_Sum', 'CONF_WAC',
-       'CONF_WCC', 'CONF_ind', 'SEED_1.0', 'SEED_2.0', 'SEED_3.0', 'SEED_4.0',
-       'SEED_5.0', 'SEED_6.0', 'SEED_7.0', 'SEED_8.0', 'SEED_9.0', 'SEED_10.0',
-       'SEED_11.0', 'SEED_12.0', 'SEED_13.0', 'SEED_14.0', 'SEED_15.0',
-       'SEED_16.0', 'SEED_Missed Tournament', 'POSTSEASON_2.0',
-       'POSTSEASON_4.0', 'POSTSEASON_8.0', 'POSTSEASON_16.0',
-       'POSTSEASON_32.0', 'POSTSEASON_64.0', 'POSTSEASON_68.0']
-
-    df_form = pd.DataFrame([np.zeros(76)], columns=df_columns)
-    
-    df_forms['SEED_Missed Tournament']=1
-    df_forms['POSTSEASON_Missed Tournament']=1
-    df_forms[f'CONF_{team_conf}']=1
-
     tdf = df.drop(['POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
     # tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF', 'BARTHAG','WAB'], axis=1).copy()
     
@@ -506,7 +485,27 @@ elif choice == "시뮬레이션":
             for i in subper:
                 final_df.loc[f"{p+1}번째 선수", i] -= (int(max_values[i]) / 50) * stat_pl.loc[f"{p+1}번째 선수", stat]
 
+    df_columns = ['ADJOE', 'ADJDE', 'BARTHAG', 'EFG_O', 'EFG_D', 'TOR', 'TORD', 'ORB',
+       'DRB', 'FTR', 'FTRD', '2P_O', '2P_D', '3P_O', '3P_D', 'ADJ_T', 'WAB',
+       'CONF_A10', 'CONF_ACC', 'CONF_AE', 'CONF_ASun', 'CONF_Amer', 'CONF_B10',
+       'CONF_B12', 'CONF_BE', 'CONF_BSky', 'CONF_BSth', 'CONF_BW', 'CONF_CAA',
+       'CONF_CUSA', 'CONF_GWC', 'CONF_Horz', 'CONF_Ind', 'CONF_Ivy',
+       'CONF_MAAC', 'CONF_MAC', 'CONF_MEAC', 'CONF_MVC', 'CONF_MWC',
+       'CONF_NEC', 'CONF_OVC', 'CONF_P12', 'CONF_Pat', 'CONF_SB', 'CONF_SC',
+       'CONF_SEC', 'CONF_SWAC', 'CONF_Slnd', 'CONF_Sum', 'CONF_WAC',
+       'CONF_WCC', 'CONF_ind', 'SEED_1.0', 'SEED_2.0', 'SEED_3.0', 'SEED_4.0',
+       'SEED_5.0', 'SEED_6.0', 'SEED_7.0', 'SEED_8.0', 'SEED_9.0', 'SEED_10.0',
+       'SEED_11.0', 'SEED_12.0', 'SEED_13.0', 'SEED_14.0', 'SEED_15.0',
+       'SEED_16.0', 'SEED_Missed Tournament', 'POSTSEASON_2.0',
+       'POSTSEASON_4.0', 'POSTSEASON_8.0', 'POSTSEASON_16.0',
+       'POSTSEASON_32.0', 'POSTSEASON_64.0', 'POSTSEASON_68.0']
 
+    df_forms = pd.DataFrame([np.zeros(76)], columns=df_columns)
+    
+    df_forms['SEED_Missed Tournament']=1
+    df_forms['POSTSEASON_Missed Tournament']=1
+    df_forms[f'CONF_{team_conf}']=1
+    
     percentage_cal(pl, df_forms, df=fromShooting, stat='Shooting')
     percentage_cal(pl, df_forms, df=fromDribbling, stat='Dribbling')
     percentage_cal(pl, df_forms, df=fromRebounding, stat='Rebounding')
