@@ -517,7 +517,7 @@ elif choice == "시뮬레이션":
     
     option = st.selectbox(
     '원하는 차트를 골라주세요',
-    ('LinearRegressor', 'RandomForest', 'DecisionTree', 'XGBoost'))
+    ('LinearRegressor', 'RandomForest', 'DecisionTree')) #'XGBoost'
     # https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/DecisionTree.pkl
     url='https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/'
     model_path = f"{url}{option}.pkl"
