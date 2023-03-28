@@ -510,7 +510,7 @@ elif choice == "시뮬레이션":
 
     teaminfo['CONF']=team_conf
     teaminfo['BARTHAG']=0.5
-    teaminfo['POSTSEASON']='Missed Tournament'
+    teaminfo["POSTSEASON"]="Missed Tournament"
     teaminfo['SEED']='Missed Tournament'
     teaminfo['WAB']=0
 
