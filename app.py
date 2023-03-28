@@ -519,8 +519,9 @@ elif choice == "시뮬레이션":
     '원하는 차트를 골라주세요',
     ('LinearRegressor', 'RandomForest', 'DecisionTree')) #'XGBoost'
     # https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/DecisionTree.pkl
+    # https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/DecisionTree.pkl
     url='https://github.com/whataLIN/sportsTOoTOo/raw/main/KL/'
-    model_path = f"{url}{option}.pkl"
+    model_path = url+option+".pkl"
     model = joblib.load(model_path)
 
     predict_button = st.button("예측")
