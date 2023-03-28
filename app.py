@@ -562,7 +562,8 @@ elif choice == "시뮬레이션":
     predict_button = st.button("예측")
 
     if predict_button:
-        variable = teaminfo
+        variable = df_forms
+    
         model = joblib.load(f'KL/{option}.pkl')
         pred = model.predict([variable])
         st.metric("결과: ", pred)
