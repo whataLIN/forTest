@@ -369,18 +369,8 @@ elif choice == "데이터페이지":
     with tab3:
         tab3.subheader("Streamlit 진행상태..")
         st.write()
-        '''
-        ### 현재 진행상태
-        > * 메인페이지 구현완료.
-        > * 데이터 페이지 내 data tab 데이터 검색 기능 추가..
-        > * 데이터 페이지-Bar차트-지역/시즌에 따른 팀들의 승률 데이터 추가
-        > * ...
 
-        ### 추가해야 할 기능
-        > * 머신러닝 모델링 구형
-        > * 팀들의 스탯 별 레이더차트 비교
 
-        '''
 
 elif choice == "시뮬레이션":
 
@@ -415,8 +405,8 @@ elif choice == "시뮬레이션":
     cols = st.columns(5)
     
     player_keys = [
-        "shooting", "Dribbling", "Passing", "Rebounding", 'Defense', "Stamina"
-    ]
+        "shooting", "Dribbling", "Rebounding", 'Defense', "Stamina"
+    ]       #"Passing"
 
     pl=pd.DataFrame(columns=player_keys, index=[f"{p}번째 선수" for p in range(1,6)])
     # for i, t in enumerate(tabs):
@@ -430,7 +420,7 @@ elif choice == "시뮬레이션":
         with c:
             st.slider("슈팅", min_value=1, max_value=10, value=1, key=f"shooting_{i+1}")
             st.slider("드리블", min_value=1, max_value=10, value=1, key=f"Dribbling_{i+1}")
-            st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i+1}")
+            # st.slider("패스", min_value=1, max_value=10, value=1, key=f"Passing_{i+1}")
             st.slider("리바운드", min_value=1, max_value=10, value=1, key=f"Rebounding_{i+1}")
             st.slider("수비", min_value=1, max_value=10, value=1, key=f"Defense_{i+1}")
             st.slider("스테미나", min_value=1, max_value=10, value=1, key=f"Stamina_{i+1}")
@@ -447,7 +437,7 @@ elif choice == "시뮬레이션":
 
     
     tdf = df.drop(['TEAM', 'YEAR','W','G', 'POSTSEASON', 'SEED', 'CONF'], axis=1).copy()
-    max_values = [tdf[i].max() for i in tdf.columns]
+    max_values = {key: int(value) for key, value in tdf.max().to_dict().items()}
 
         # ADJOE, ADJDE, EFG_O, EFG_D, TOR, TORD, ORB, DRB, FTR, FTRD, 2P_O, 2P_D, 3P_O, 3P_D, ADJ_T
         # postseason, seed는 missed tornament.
@@ -478,7 +468,7 @@ elif choice == "시뮬레이션":
                 contribution_percentages[p][v] = contribution_percentage
         return contribution_percentages
 
-    contribution_percentages = calculate_contribution_percentages(stats, max_values)
+    contribution_percentages = calculate_contribution_percentages(pl, max_values)
 
     for p in range(5):
         for v in range(num_vars):
@@ -490,4 +480,19 @@ elif choice == "시뮬레이션":
 
                 #슈팅 : 슈팅_i
             #데이터프레임에 선수 능력치 저장하깅
+
+
+
+        '''
+        ### 현재 진행상태
+        > * 메인페이지 구현완료.
+        > * 데이터 페이지 내 data tab 데이터 검색 기능 추가..
+        > * 데이터 페이지-Bar차트-지역/시즌에 따른 팀들의 승률 데이터 추가
+        > * ...
+
+        ### 추가해야 할 기능
+        > * 머신러닝 모델링 구형
+        > * 팀들의 스탯 별 레이더차트 비교
+
+        '''
     
