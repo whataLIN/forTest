@@ -420,7 +420,7 @@ elif choice == "시뮬레이션":
 
     pl=pd.DataFrame(columns=player_keys, index=[f"{p}번째 선수" for p in range(1,6)])
     # for i, t in enumerate(tabs):
-    url='https://github.com/whataLIN/sportsTOoTOo/blob/main/cbb.csv'
+    url='https://github.com/whataLIN/sportsTOoTOo/raw/main/cbb.csv'
     df = pd.read_csv(url)
 
     conf_list=list(df['CONF'].unique())
